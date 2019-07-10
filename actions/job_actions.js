@@ -3,7 +3,8 @@ import reverseGeocode from 'latlng-to-zip';
 import qs from 'qs';
 
 import {
-    FETCH_JOBS
+    FETCH_JOBS,
+    LIKE_JOB
 } from './types';
 
 const JOB_ROOT_URL = 'http://api.indeed.com/ads/apisearch?';
@@ -37,7 +38,7 @@ const data = {
             country:'US',
             formattedLocation:'Austin, TX',
             source:'Indeed',
-            date:'Mon, 20 Mar 2017 17:27:51 GMT',
+            date:'Mon, 1 Jul 2019 17:27:51 GMT',
             snippet:'Expert level knowledge of <b>Java</b> and related technologies. As a <b>Java</b> Developer, you will be performing the following responsibilities:...',
             onmousedown:"indeed_clk(this,'433');",
             latitude:37.000000, //36.99999979649789 =>36.97990337732907 36.979903
@@ -45,7 +46,8 @@ const data = {
             jobKey:'cd30252e2fa634b9',
             sponsored:false,
             indeedApply:true,
-            formatedLocationFull:'Ausin, TX'
+            formatedLocationFull:'Ausin, TX',
+            formattedRelativeTime:'10 days ago'
         },
         {
             jobtitle:'Junior Java Developer',
@@ -55,15 +57,16 @@ const data = {
             country:'US',
             formattedLocation:'Austin, TX',
             source:'Indeed',
-            date:'Mon, 20 Mar 2017 17:27:51 GMT',
+            date:'Mon, 2 Jul 2019 17:27:51 GMT',
             snippet:'Expert level knowledge of <b>Java</b> and related technologies. As a <b>Java</b> Developer, you will be performing the following responsibilities:...',
             onmousedown:"indeed_clk(this,'433');",
             latitude:36.979903, //36.99999979649789 =>36.97990337732907 36.979903
             longitude:-122.002421, //-121.99999993667006 => -122.00242096558212 -122.002421
-            jobKey:'cd30252e2fa634b9',
+            jobKey:'cd30252f2fa634b9',
             sponsored:false,
             indeedApply:true,
-            formatedLocationFull:'Ausin, TX'
+            formatedLocationFull:'Ausin, TX',
+            formattedRelativeTime:'9 days ago'
         },
         {
             jobtitle:'Senior Java Developer',
@@ -73,15 +76,16 @@ const data = {
             country:'US',
             formattedLocation:'Austin, TX',
             source:'Indeed',
-            date:'Mon, 20 Mar 2017 17:27:51 GMT',
+            date:'Sun, 30 Jun 2019 17:27:51 GMT',
             snippet:'Expert level knowledge of <b>Java</b> and related technologies. As a <b>Java</b> Developer, you will be performing the following responsibilities:...',
             onmousedown:"indeed_clk(this,'433');",
             latitude:36.984005, //36.99999979649789 =>36.97990337732907 36.979903
             longitude:-121.978743, //-121.99999993667006 => -122.00242096558212 -122.002421
-            jobKey:'cd30252e2fa634b9',
+            jobKey:'cd30252g2fa634b9',
             sponsored:false,
             indeedApply:true,
-            formatedLocationFull:'Ausin, TX'
+            formatedLocationFull:'Ausin, TX',
+            formattedRelativeTime:'11 days ago'
         },
         {
             jobtitle:'Senior Java Developer',
@@ -91,15 +95,16 @@ const data = {
             country:'US',
             formattedLocation:'Austin, TX',
             source:'Indeed',
-            date:'Mon, 20 Mar 2017 17:27:51 GMT',
+            date:'Sun, 4 Jul 2019 17:27:51 GMT',
             snippet:'Expert level knowledge of <b>Java</b> and related technologies. As a <b>Java</b> Developer, you will be performing the following responsibilities:...',
             onmousedown:"indeed_clk(this,'433');",
             latitude:37.006208, //36.99999979649789 =>36.97990337732907 36.979903
             longitude:-121.989090, //-121.99999993667006 => -122.00242096558212 -122.002421
-            jobKey:'cd30252e2fa634b9',
+            jobKey:'cd30252h2fa634b9',
             sponsored:false,
             indeedApply:true,
-            formatedLocationFull:'Ausin, TX'
+            formatedLocationFull:'Ausin, TX',
+            formattedRelativeTime:'11 days ago'
         }
     ]
 }
@@ -122,3 +127,10 @@ export const fetchJobs = (region,callback) => async (dispath) => {
         console.error(e);
     }
 };
+
+export const likeJob = (job)=>{
+    return {
+        payload:job,
+        type:LIKE_JOB,
+    };
+}
