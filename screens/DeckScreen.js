@@ -2,11 +2,18 @@ import React, {Component} from 'react';
 import {View, Text,Platform} from 'react-native';
 import {connect} from 'react-redux';
 import {MapView} from 'expo';
-import {Card,Button} from 'react-native-elements';
+import {Card,Button,Icon} from 'react-native-elements';
 import Swipe from '../components/Swipe';
-import * as action from '../actions';
+import * as actions from '../actions';
 
 class DeckScreen extends Component {
+    static navigationOptions = {
+        title:'Jobs',
+        tabBarIcon:({tintColor})=>{
+            return <Icon name="description" size={20} color={tintColor}/>
+        }
+    }
+
     renderCard(job) {
         const initialRegion={
             longitude:job.longitude,
@@ -20,7 +27,7 @@ class DeckScreen extends Component {
                     <MapView
                         scrollEnabled={false}
                         style={{flex:1}}
-                        cacheEnable={Platform.OS==='android'?true:false}
+                        cacheEnable={Platform.OS==='android'}
                         initialRegion={initialRegion}
                     >
                     </MapView>
@@ -34,13 +41,23 @@ class DeckScreen extends Component {
         )
     }
 
-    renderNoMoreCards() {
+    renderNoMoreCards = ()=>{
         return (
-            <Card title="No more jobs"></Card>
+            <Card title="No more jobs">
+                <Button
+                    title="Back to Map"
+                    large
+                    icon={{name:'my-location'}}
+                    backgroundColor='#03A9F4'
+                    onPress={()=>{this.props.navigation.navigate('Map')}}
+                />
+            </Card>
         )
     }
 
     render() {
+        console.log('---- test_1 ----');
+        console.log(this.props.jobs);
         return (
             <View style={{marginTop:10}}>
                 <Swipe
@@ -65,6 +82,8 @@ const styles = {
 }
 
 function mapStateToProps({jobs}){
+    console.log('--- text 4 mapStateToProps ----');
+    console.log(jobs.results);
     return {jobs:jobs.results};
 }
 

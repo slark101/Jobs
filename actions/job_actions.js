@@ -4,7 +4,8 @@ import qs from 'qs';
 
 import {
     FETCH_JOBS,
-    LIKE_JOB
+    LIKE_JOB,
+    CLEAR_LIKED_JOBS
 } from './types';
 
 const JOB_ROOT_URL = 'http://api.indeed.com/ads/apisearch?';
@@ -47,7 +48,8 @@ const data = {
             sponsored:false,
             indeedApply:true,
             formatedLocationFull:'Ausin, TX',
-            formattedRelativeTime:'10 days ago'
+            formattedRelativeTime:'10 days ago',
+            url:'https://www.imdb.com/',
         },
         {
             jobtitle:'Junior Java Developer',
@@ -66,7 +68,8 @@ const data = {
             sponsored:false,
             indeedApply:true,
             formatedLocationFull:'Ausin, TX',
-            formattedRelativeTime:'9 days ago'
+            formattedRelativeTime:'9 days ago',
+            url:'https://www.imdb.com/',
         },
         {
             jobtitle:'Senior Java Developer',
@@ -85,7 +88,8 @@ const data = {
             sponsored:false,
             indeedApply:true,
             formatedLocationFull:'Ausin, TX',
-            formattedRelativeTime:'11 days ago'
+            formattedRelativeTime:'11 days ago',
+            url:'https://www.imdb.com/',
         },
         {
             jobtitle:'Senior Java Developer',
@@ -104,7 +108,8 @@ const data = {
             sponsored:false,
             indeedApply:true,
             formatedLocationFull:'Ausin, TX',
-            formattedRelativeTime:'11 days ago'
+            formattedRelativeTime:'11 days ago',
+            url:'https://www.imdb.com/',
         }
     ]
 }
@@ -134,3 +139,7 @@ export const likeJob = (job)=>{
         type:LIKE_JOB,
     };
 }
+
+export const clearLikedJobs = () => {
+    return {type:CLEAR_LIKED_JOBS};
+};

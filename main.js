@@ -1,5 +1,6 @@
 import React from 'react';
 import { StyleSheet, View} from 'react-native';
+import {Icon} from 'react-native-elements';
 import {
     createBottomTabNavigator,
     createAppContainer,
@@ -30,7 +31,18 @@ const MainNavigator = createBottomTabNavigator(
                         ReviewJobs: {screen:ReviewScreen},
                         Setting:{screen:SettingsScreen},
                     }
-                )}
+                ),
+                    navigationOptions: {
+                        title:'Review',
+                        tabBarIcon:({tintColor})=>{
+                            return <Icon name="favorite" size={20} color={tintColor}/>
+                        }
+                    }
+                }
+            },{
+                tabBarOptions:{
+                    labelStyle:{fontSize:12}
+                },
             }
         )}
     },
